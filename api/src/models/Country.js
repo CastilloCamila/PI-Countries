@@ -5,8 +5,7 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('country', {
     id:{
-      type:DataTypes.STRING(3),
-      
+      type:DataTypes.CHAR(3),
       allowNull:false,
       primaryKey:true
     },
@@ -25,7 +24,8 @@ module.exports = (sequelize) => {
     },
     capital:{
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:false,
+      default:'No titen Capital'
     },
     subregion:{
       type:DataTypes.STRING,
