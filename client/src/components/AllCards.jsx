@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import CardCountry from './CardCountry'
 import {getAllCountries} from '../redux/actions/index.js'
 
+import { Link } from "react-router-dom";
 
 export default function AllCards(props) {
     const dispatch = useDispatch()
@@ -14,6 +15,9 @@ export default function AllCards(props) {
     return (
         <>
         <div>
+            <Link to='/activity'>
+                <p>actividades</p>
+            </Link>
             
             {
                 countries.length >0 ?  countries.map((country)=>(

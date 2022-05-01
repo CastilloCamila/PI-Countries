@@ -1,8 +1,10 @@
-import {GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL} from "../actions/actionTypes.js";
+import {GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL, ADD_ACTIVITY} from "../actions/actionTypes.js";
 
 const incialState={
-    countries:{},
-    countryDetail:{}
+    countryDetail:{},
+    activity:{},
+    countries:{}
+    
 }
 const reducer= function  (state= incialState, {type,payload})  {
     switch (type) {
@@ -15,6 +17,11 @@ const reducer= function  (state= incialState, {type,payload})  {
             return{
                 ...state,
                 countryDetail: payload
+            }
+        case ADD_ACTIVITY:
+            return{
+                ...state,
+                activity:payload
             }
         default:
             return state;
