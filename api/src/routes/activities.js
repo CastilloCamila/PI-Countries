@@ -13,7 +13,9 @@ router.post('/', async (req, res, next) => {
             ,
                 default: propiedades
         })
-            activity.setCountries(countries)
+            if(activity[1]==true) activity[0].setCountries(countries)
+        
+             
             return res.json(activity)
        
     } catch (error) {

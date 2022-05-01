@@ -18,11 +18,11 @@ sequelize.define('activity',{
         defaultValue:null
     },
     duration:{
-        type:DataTypes.INTEGER,
+        type:DataTypes.STRING,
         defaultValue:null
     },
     season:{
-        type:DataTypes.ENUM('summer','autum','winter','spring'),
+        type:DataTypes.ENUM('Summer','Autum','Winter','Spring'),
         defaultValue:null
         
     }
