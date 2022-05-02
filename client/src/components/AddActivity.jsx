@@ -1,20 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AddActivity } from "../redux/actions";
+import { getAllActivities } from "../redux/actions";
 
-function validate(activity) {
-    let errors = {}
 
-    if (/[`~,.<>;':"/[\]|{}()=_+-?¡!¿*{}´´¨´&%$#°]/.test(activity.name)) errors.name = 'Name not allowed especials characters or numbers'
-    if (!activity.name) errors.name = 'Name is requeried'
-    if (activity.difficulty === 'DEFAULT') errors.difficulty = 'You must to select a difficulty'
-    if (activity.duration === 'DEFAULT') errors.duration = 'You must to select a duration'
-    if (activity.season === 'DEFAULT') errors.season = 'You must to select a seasson'
-    if (activity.country === '') errors.country = 'You must to select a country'
 
-    return errors
-
-}
 function findCountries(countries) {
     let countriesname = countries.map(country => {
         return { id: country.id, name: country.name }
@@ -22,9 +12,15 @@ function findCountries(countries) {
     return countriesname
 
 }
+const dificultiesValues = [1, 2, 3, 4, 5]
 
 export default function Addactivity() {
-    const dispatch = useDispatch()
+    
+    const dispatch = useDispatch();
+
+    let countries = useSelector((state) => state.countries);
+    const allActivities= useSelector((state)=>state.allActivities)
+
     const [activity, setActivity] = useState({
         name: "",
         difficulty: "DEFAULT",
@@ -33,11 +29,24 @@ export default function Addactivity() {
         country: ''
     })
     let [errors, setErrors] = useState({})
-    let countries = useSelector((state) => state.countries)
     let [addedCountries, setAddedCountries] = useState(['BWA', 'ARG'])
-    const dificultiesValues = [1, 2, 3, 4, 5]
-    countries = findCountries(countries)
 
+    countries = findCountries(countries)
+   
+    useEffect(()=>{
+       dispatch(getAllActivities())
+    },[dispatch])
+    function validate(activity) {
+        let errors = {}
+    
+        if (/[`~,.<>;':"/[\]|{}()=_+-?¡!¿*{}´´¨´&%$#°]/.test(activity.name)) errors.name = 'Name not allowed especials characters or numbers'
+        if (activity.difficulty === 'DEFAULT') errors.difficulty = 'You must to select a difficulty'
+        if (activity.duration === 'DEFAULT') errors.duration = 'You must to select a duration'
+        if (activity.season === 'DEFAULT') errors.season = 'You must to select a seasson'
+        if (activity.country === '') errors.country = 'You must to select a country'
+        return errors
+    
+    }
 
     function addCountry() {
         if (addedCountries.includes(activity.country)) {
@@ -63,7 +72,7 @@ export default function Addactivity() {
     }
 
 
-    function handleOnChange(e) {
+    async function handleOnChange(e) {
         setActivity({
             ...activity,
             [e.target.name]: e.target.value
@@ -73,13 +82,13 @@ export default function Addactivity() {
                 ...activity,
                 [e.target.name]: e.target.value
             }
-
         ))
-
     }
     function handleOnSubmit(event) {
-
         event.preventDefault()
+        console.log("actividad encontrada",allActivities.find(act=>act.name == activity.name))
+        if(allActivities.find(act=>act.name == activity.name)) return setErrors({ ...errors, name: "This activity already exist" })
+        else{
         const activitytoSend = {
             name: activity.name,
             difficulty: activity.difficulty,
@@ -87,20 +96,19 @@ export default function Addactivity() {
             season: activity.season,
             countries: addedCountries
         }
-        console.log(activitytoSend)
-        dispatch(AddActivity(activitytoSend))
-
-
+        dispatch(AddActivity(activitytoSend))}
     }
     return (
         <div>
             <form onSubmit={handleOnSubmit}>
                 <label htmlFor="name">Nombre</label>
                 <input type="text" name="name" value={activity.name} onChange={handleOnChange} />
+
                 {errors.name &&
                     <p>{errors.name}</p>
                 }
                 <br />
+
                 <label htmlFor="difficulty">Dificulty</label>
 
                 <select name="difficulty" id="" value={activity.difficulty} onChange={handleOnChange}>

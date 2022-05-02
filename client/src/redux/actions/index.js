@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL , ADD_ACTIVITY} from './actionTypes.js'
+import { GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL , ADD_ACTIVITY,GET_ALL_ACTIVITIES} from './actionTypes.js'
 
-export function getAllCountries(country) {
+export function getAllCountries() {
 
     return dispatch => {
         return axios.get(`http://localhost:3001/countries`)
@@ -24,4 +24,11 @@ export function AddActivity(data) {
             .then(response => dispatch({ type: ADD_ACTIVITY, payload: response.data }))
             .catch(error=>error)
     }
+}
+export function getAllActivities() {
+    return dispatch=>{
+        return axios.get(`http://localhost:3001/activity/allActivities`)
+        .then(response=> dispatch({type:GET_ALL_ACTIVITIES, payload:response.data}))
+    }
+    
 }

@@ -9,19 +9,30 @@ router.post('/', async (req, res, next) => {
         
             const propiedades = { name, difficulty, duration, season }
             let activity = await Activity.findOrCreate({
-                where: propiedades
+                where: 
+                    propiedades
+                
             ,
                 default: propiedades
         })
-            if(activity[1]==true) activity[0].setCountries(countries)
+            if (activity[1]==false) res.status(400).json({msg:'This activity has already exist'})
+            else{activity[0].setCountries(countries)
         
              
-            return res.json(activity)
+            return res.json(activity)}
        
     } catch (error) {
         next(error)
     }
 
+})
+router.get("/allActivities", async (req,res,next)=>{
+    try{
+        const allActivities= await Activity.findAll()
+        res.json(allActivities)
+    }catch(error){
+        next(error)
+    }
 })
 
 module.exports = router;
