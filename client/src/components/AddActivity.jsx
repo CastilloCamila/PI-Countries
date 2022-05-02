@@ -72,7 +72,7 @@ export default function Addactivity() {
     }
 
 
-    async function handleOnChange(e) {
+    function handleOnChange(e) {
         setActivity({
             ...activity,
             [e.target.name]: e.target.value
