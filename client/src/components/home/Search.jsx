@@ -4,7 +4,8 @@ import { searchCountry } from '../../redux/actions'
 
 export default function Search() {
     const dispatch = useDispatch()
-    let [search,setSearch]=useState(
+    const [errors,setErrors]=useState('')
+    const [search,setSearch]=useState(
         {country:''}
     )
 
@@ -15,16 +16,23 @@ export default function Search() {
                 country:e.target.value
             }
         )
+        
     }
     function handleOnsubmit(event){
         event.preventDefault()
         console.log('submitt')
+        
         dispatch(searchCountry(search.country))
+        .catch(error=>setErrors(error.response.data.msg))
+
     }
     return(
         <div>
             <input type="text" name="search" value={search.search} onChange={handleOnChange} />
             <button onClick={handleOnsubmit}>Buscar</button>
+            {errors &&
+                <p>{errors}</p>
+            }
         </div>
     )
 }

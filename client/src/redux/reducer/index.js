@@ -2,7 +2,32 @@ import {GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL, ADD_ACTIVITY, GET_ALL_ACTIVITIES,
 
 
 const incialState={
-    search:{},
+    search:{
+        //[{
+    //     id: 'BWA',
+    //     name: 'Botswana',
+    //     image: 'https://flagcdn.com/w320/bw.png',
+    //     continent: 'Africa',
+    //     capital: 'Gaborone',
+    //     subregion: 'Southern Africa',
+    //     area: 582000,
+    //     population: 2351625,
+    //     createdAt: '2022-05-02T19:35:35.982Z',
+    //     updatedAt: '2022-05-02T19:35:35.982Z'
+    //   },
+    //   {
+    //     id: 'MKD',
+    //     name: 'North Macedonia',
+    //     image: 'https://flagcdn.com/w320/mk.png',
+    //     continent: 'Europe',
+    //     capital: 'Skopje',
+    //     subregion: 'Southeast Europe',
+    //     area: 25713,
+    //     population: 2077132,
+    //     createdAt: '2022-05-02T19:35:35.982Z',
+    //     updatedAt: '2022-05-02T19:35:35.982Z'
+    //   }]
+    },
     countryDetail:{},
     activity:{},
     allActivities:{},
