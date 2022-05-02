@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import { useDispatch } from 'react-redux'
-import { searchCountry } from '../redux/actions'
+import { searchCountry } from '../../redux/actions'
 
 export default function Search() {
     const dispatch = useDispatch()

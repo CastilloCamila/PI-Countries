@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import CardCountry from './CardCountry'
-import {getAllCountries} from '../redux/actions/index.js'
+import {getAllCountries} from '../../redux/actions/index.js'
 
 import { Link } from "react-router-dom";
 
@@ -15,7 +15,7 @@ export default function AllCards(props) {
     return (
         <>
         <div>
-            <Link to='/activity'>
+            <Link to='/home/activity'>
                 <p>actividades</p>
             </Link>
             

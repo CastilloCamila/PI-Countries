@@ -13,10 +13,11 @@ router.get('/', async (req, res, next) => {
                     }
                 }
             })
-            if (allCountries) return res.json(allCountries)
-            else return res.status(404).json({ msg: 'The name did not match any country' })
+            if (allCountries===false)  return res.status(404).json({ msg: 'The name did not match any country' })
+            else return res.json(allCountries)
         } else {
-
+            if (name==="") res.status(404).json({ msg: 'Must have a name for a search' })
+           
             let allCountries = await Country.findAll()
             return res.json(allCountries)
         }

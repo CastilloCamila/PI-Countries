@@ -6,7 +6,7 @@ function CardCountry ({image, name, continent, id}){
 
     return(
         <div>
-            <Link to={`/countries/${id}`}>
+            <Link to={`/home/country/${id}`}>
             <div> 
                 <h2>{name}</h2>
             </div>

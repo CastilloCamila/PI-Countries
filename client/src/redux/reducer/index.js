@@ -2,11 +2,12 @@ import {GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL, ADD_ACTIVITY, GET_ALL_ACTIVITIES,
 
 
 const incialState={
+    search:{},
     countryDetail:{},
     activity:{},
     allActivities:{},
-    countries:{},
-    search:{}
+    countries:{}
+    
     
 }
 const reducer= function  (state= incialState, {type,payload})  {

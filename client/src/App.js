@@ -1,23 +1,38 @@
 import './App.css';
-import AllCards from './components/AllCards'
-import CountryDetail from './components/CountryDetail';
-import Search from './components/Search';
-import AddActivity from './components/AddActivity';
+
+
+import CountryDetail from './components/home/CountryDetail';
+import Search from './components/home/Search';
+import AddActivity from './components/home/AddActivity';
+import LandingPage from './components/landingPage/LandingPage'
+import Home from './components/home/Home'
 import {Route} from 'react-router-dom';
+
+import NavBar from './components/home/NavBar';
 function App() {
   return (
     <div className="App">
-      <h1>Henry Countries</h1>
+      
+      <Route exact path={'/'}>
+      <LandingPage/>
+      </Route>
+
+      <Route exact path={'/home'}>
+      <Home/>
+      </Route>
+
+      <Route path={'/home'}>
+      <NavBar/>
+      </Route>
+
       <Route exact path={'/search'}>
       <Search/>
       </Route>
-      <Route exact path={'/activity'}>
+      <Route exact path={'/home/activity'}>
       <AddActivity/>
+      
       </Route>
-      <Route exact path={'/countries'}>
-      <AllCards/>
-      </Route>
-      <Route exact path={'/countries/:id'}>
+      <Route exact path={'/home/country/:id'}>
       <CountryDetail/>
       </Route>
       

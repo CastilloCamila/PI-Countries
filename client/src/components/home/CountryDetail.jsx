@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {getCountryDetail} from '../redux/actions/index.js'
+import {getCountryDetail} from '../../redux/actions/index.js'
 import { useParams } from 'react-router-dom'
 
 
