@@ -1,4 +1,4 @@
-import Home from '../home/Home'
+
 import { Link } from 'react-router-dom'
 
 export default function LandingPage() {

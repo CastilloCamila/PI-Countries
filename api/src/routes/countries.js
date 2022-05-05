@@ -9,11 +9,11 @@ router.get('/', async (req, res, next) => {
             let allCountries = await Country.findAll({
                 where: {
                     name: {
-                        [Op.iLike]: `%${name}%`
+                        [Op.iLike]: `${name}%`
                     }
                 }
             })
-            if (allCountries===false)  return res.status(404).json({ msg: 'The name did not match any country' })
+            if (allCountries.length===0)  return res.status(404).json({ msg: 'The name did not match any country' })
             else return res.json(allCountries)
         } else {
             if (name==="") res.status(404).json({ msg: 'Must have a name for a search' })
@@ -48,6 +48,5 @@ router.get('/:id', async (req, res, next) => {
     catch (error) {
         next(error)
     }
-
 })
 module.exports = router

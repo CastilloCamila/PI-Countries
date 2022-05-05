@@ -2,7 +2,7 @@ import './App.css';
 
 
 import CountryDetail from './components/home/CountryDetail';
-import Search from './components/home/Search';
+
 import AddActivity from './components/home/AddActivity';
 import LandingPage from './components/landingPage/LandingPage'
 import Home from './components/home/Home'
@@ -17,17 +17,16 @@ function App() {
       <LandingPage/>
       </Route>
 
-      <Route exact path={'/home'}>
-      <Home/>
-      </Route>
-
       <Route path={'/home'}>
       <NavBar/>
       </Route>
 
-      <Route exact path={'/search'}>
-      <Search/>
+      <Route exact path={'/home'}>
+      <Home/>
       </Route>
+
+      
+
       <Route exact path={'/home/activity'}>
       <AddActivity/>
       

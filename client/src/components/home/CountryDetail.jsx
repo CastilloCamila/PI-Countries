@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {getCountryDetail} from '../../redux/actions/index.js'
+import {getCountryDetail, cleartDetail} from '../../redux/actions/index.js'
 import { useParams } from 'react-router-dom'
 
 
@@ -11,6 +11,10 @@ export default function CountryDetail(){
     const countryDetail = useSelector((state) => state.countryDetail)
     useEffect(() => {
         dispatch(getCountryDetail(id))
+        return ()=>{
+            dispatch(cleartDetail())}
+            
+        
     },[dispatch, id])
     return(
         <div>{countryDetail.id ?

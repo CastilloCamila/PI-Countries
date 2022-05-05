@@ -86,8 +86,8 @@ export default function Addactivity() {
     }
     function handleOnSubmit(event) {
         event.preventDefault()
-        console.log("actividad encontrada",allActivities.find(act=>act.name == activity.name))
-        if(allActivities.find(act=>act.name == activity.name)) return setErrors({ ...errors, name: "This activity already exist" })
+        console.log("actividad encontrada",allActivities.find(act=>act.name === activity.name))
+        if(allActivities.find(act=>act.name === activity.name)) return setErrors({ ...errors, name: "This activity already exist" })
         else{
         const activitytoSend = {
             name: activity.name,

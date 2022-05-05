@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL , ADD_ACTIVITY,GET_ALL_ACTIVITIES, SEARCH_COUNTRY} from './actionTypes.js'
+import { GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL , ADD_ACTIVITY,GET_ALL_ACTIVITIES, SEARCH_COUNTRY, FILTERED, CLEAR_DETAIL} from './actionTypes.js'
 
 export function getAllCountries() {
 
@@ -36,5 +36,16 @@ export function searchCountry(name){
     return dispatch=>{
         return axios.get(`http://localhost:3001/countries?name=${name}`)
     .then(response=>dispatch({type:SEARCH_COUNTRY, payload:response.data}))
+    }
+}
+export function filtered(payload){
+    return{
+        type:FILTERED,
+        payload:payload
+    }
+}
+export function cleartDetail(){
+    return{
+        type:CLEAR_DETAIL
     }
 }
