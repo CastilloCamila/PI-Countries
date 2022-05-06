@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL , ADD_ACTIVITY,GET_ALL_ACTIVITIES, SEARCH_COUNTRY, FILTERED, CLEAR_DETAIL} from './actionTypes.js'
+import { GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL , ADD_ACTIVITY,GET_ALL_ACTIVITIES, SEARCH_COUNTRY, FILTERED, CLEAR_DETAIL, FILTERED_BY_POPULATION} from './actionTypes.js'
 
 export function getAllCountries() {
 
@@ -44,6 +44,7 @@ export function filtered(payload){
         payload:payload
     }
 }
+
 export function cleartDetail(){
     return{
         type:CLEAR_DETAIL

@@ -29,7 +29,7 @@ export default function Addactivity() {
         country: ''
     })
     let [errors, setErrors] = useState({})
-    let [addedCountries, setAddedCountries] = useState(['BWA', 'ARG'])
+    let [addedCountries, setAddedCountries] = useState([])
 
     countries = findCountries(countries)
    
@@ -38,7 +38,7 @@ export default function Addactivity() {
     },[dispatch])
     function validate(activity) {
         let errors = {}
-    
+        if (activity.name==="") errors.name = 'A name is required'
         if (/[`~,.<>;':"/[\]|{}()=_+-?¡!¿*{}´´¨´&%$#°]/.test(activity.name)) errors.name = 'Name not allowed especials characters or numbers'
         if (activity.difficulty === 'DEFAULT') errors.difficulty = 'You must to select a difficulty'
         if (activity.duration === 'DEFAULT') errors.duration = 'You must to select a duration'
@@ -87,7 +87,8 @@ export default function Addactivity() {
     function handleOnSubmit(event) {
         event.preventDefault()
         console.log("actividad encontrada",allActivities.find(act=>act.name === activity.name))
-        if(allActivities.find(act=>act.name === activity.name)) return setErrors({ ...errors, name: "This activity already exist" })
+         if(allActivities.find(act=>act.name === activity.name)) return setErrors({ ...errors, name: "This activity already exist" })
+
         else{
         const activitytoSend = {
             name: activity.name,
@@ -96,7 +97,12 @@ export default function Addactivity() {
             season: activity.season,
             countries: addedCountries
         }
-        dispatch(AddActivity(activitytoSend))}
+        console.log(activitytoSend)
+        dispatch(AddActivity(activitytoSend))
+
+       
+
+    }
     }
     return (
         <div>
@@ -163,7 +169,7 @@ export default function Addactivity() {
 
                     }
                 </datalist>
-                <button onClick={() => !errors.country && addCountry()}>Add country</button>
+                <button type="button" onClick={() => !errors.country && addCountry()}>Add country</button>
                 {errors.country &&
                     <p>{errors.country}</p>
                 }
@@ -171,7 +177,7 @@ export default function Addactivity() {
                     addedCountries.map((country) => {
                         return <>
                             <p>{country}</p>
-                            <button onClick={() => quitCountry(country)}> Quit country</button>
+                            <button type="button" onClick={() => quitCountry(country)}> Quit country</button>
                         </>
                     })
                 }

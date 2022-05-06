@@ -10,18 +10,24 @@ export default function AllCards() {
 
 
     let [currentPage, setCurrentPage] = useState(0)
+
     const dispatch = useDispatch()
+    
     const countries = useSelector((state) => state.countries)
+
     const filteredCountries = useSelector((state) => state.filteredCountries)
+
     let filter = null
 
 
     useEffect(() => {
         dispatch(getAllCountries())
+
     }, [dispatch])
 
     //------paginate-------
     function pagination() {
+        
         if (currentPage === 0) {
             filter = filteredCountries.slice(currentPage, currentPage + 9)
             console.log('filtraddo 0', filteredCountries)
@@ -60,7 +66,7 @@ export default function AllCards() {
                             <CardCountry name={country.name} image={country.image} continent={country.continent} id={country.id} key={country.id} />
                         </>
 
-                    )) : <h2>NO haynada de nada</h2>
+                    )) : <h2>Cargandop</h2>
                 }
             </div>
         </>

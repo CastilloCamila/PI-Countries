@@ -10,12 +10,14 @@ import {
 
 
 const incialState = {
-    filters: {},
+
+    
     countryDetail: {},
     activity: {},
-    allActivities: {},
+    allActivities:[{}],
     filteredCountries: {},
     countries: {}
+    
 
 
 }
@@ -52,6 +54,7 @@ const reducer = function (state = incialState, { type, payload }) {
                 ...state,
                 filteredCountries: payload
             }
+
         case CLEAR_DETAIL:
             return {
                 ...state,
