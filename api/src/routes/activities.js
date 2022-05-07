@@ -13,7 +13,6 @@ router.post('/', async (req, res, next) => {
             where: {
                 name
             }
-
             ,
             defaults: propiedades,
         })

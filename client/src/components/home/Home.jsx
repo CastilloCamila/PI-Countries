@@ -1,5 +1,5 @@
 
-import AllCards from './AllCards'
+import AllCards from './countries/AllCards.jsx'
 
 
 export default function Home(){

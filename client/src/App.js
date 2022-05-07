@@ -1,9 +1,9 @@
 import './App.css';
 
 
-import CountryDetail from './components/home/CountryDetail';
+import CountryDetail from './components/home/countries/CountryDetail';
 
-import AddActivity from './components/home/AddActivity';
+import AddActivity from './components/home/activity/AddActivity';
 import LandingPage from './components/landingPage/LandingPage'
 import Home from './components/home/Home'
 import {Route} from 'react-router-dom';

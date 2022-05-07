@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { AddActivity } from "../../redux/actions";
-import { getAllActivities } from "../../redux/actions";
+import { AddActivity } from "../../../redux/actions";
+import { getAllActivities } from "../../../redux/actions";
 
 
 
@@ -179,7 +179,7 @@ export default function Addactivity() {
                             <p>{country}</p>
                             <button type="button" onClick={() => quitCountry(country)}> Quit country</button>
                         </>
-                    })
+                    })  
                 }
                 <br />
                 <button type="submit" >Add Acivity</button>

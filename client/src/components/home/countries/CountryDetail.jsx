@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {getCountryDetail, cleartDetail} from '../../redux/actions/index.js'
+import {getCountryDetail, cleartDetail} from '../../../redux/actions/index.js'
 import { useParams } from 'react-router-dom'
-
+import AcivityDetail from '../activity/ActivityDetail.jsx'
 
 
 export default function CountryDetail(){
@@ -16,7 +16,9 @@ export default function CountryDetail(){
             
         
     },[dispatch, id])
+    console.log(countryDetail.activities)
     return(
+        
         <div>{countryDetail.id ?
             <>
             <h1>Country:{countryDetail.name}</h1>
@@ -26,6 +28,15 @@ export default function CountryDetail(){
             <h3>Subregion:{countryDetail.subregion}</h3>
             <h3>Area:{countryDetail.area}</h3>
             <h3>Papulation:{countryDetail.population}</h3>
+            <h3>Activities:</h3>
+            {
+                countryDetail.activities.map(actDetail=>{
+                    {console.log('obj', actDetail.name)}
+                   return <AcivityDetail name={actDetail.name}  difficulty={actDetail.difficulty} duration={actDetail.duration} season={actDetail.season} />
+                })
+            }
+            {/* <h3>{countryDetail.activities[1].name}</h3> */}
+            
             </>
         : (<h1>Cargando</h1>)}
 
