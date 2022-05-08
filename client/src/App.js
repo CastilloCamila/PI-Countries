@@ -8,7 +8,7 @@ import LandingPage from './components/landingPage/LandingPage'
 import Home from './components/home/Home'
 import {Route} from 'react-router-dom';
 
-import NavBar from './components/home/NavBar';
+import NavBar from './components/home/navBar/navBar/NavBar.jsx';
 function App() {
   return (
     <div className="App">
@@ -21,7 +21,7 @@ function App() {
       <NavBar/>
       </Route>
 
-      <Route exact path={'/home'}>
+      <Route exact path={'/home/'}>
       <Home/>
       </Route>
 
