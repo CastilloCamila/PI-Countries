@@ -19,7 +19,7 @@
     border-radius: 8px;
     display: block;
     box-shadow: 0 0 20px rgb(255,255,255, .5);
-    height: 450px;
+    height: 490px;
     width: 550px;
 }
 .form{
@@ -139,3 +139,5 @@
   .countryAdd{
       display: inline-block;
   }
+
+  
