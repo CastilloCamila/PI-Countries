@@ -2,13 +2,13 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import style from "./navBar.module.css"
-import logo from "../../../../img/3.gif"
+import logo from "../../../../img/logo.gif"
 export default function NavBar(){
     return(
         <>
         <nav className={style.nav} >
 
-            <a className={style.a} href='' > <img src={logo} alt="" width="150" height="70" /></a>
+            <a className={style.a} href='' > <img src={logo} alt="" width="150" height="60" /></a>
 
             <div  className={style.div}>
                 <button className={style.btn}>
