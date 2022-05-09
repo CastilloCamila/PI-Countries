@@ -22,7 +22,7 @@
   border-style: solid;
     background: transparent;
     border-radius: 8px;
-    border-color: #4F5D75;
+    border-color: #08337B;
     padding: 0.8rem;
     margin: 0.3rem;
     cursor: pointer;
@@ -36,13 +36,14 @@
 }
 .link{
     text-decoration: none;
-    color: white;
+    color:white;
 }
 
   .btn:hover {
     border-radius: 8px;
     padding-right: 24px;
     padding-left:8px;
+    background-color: #DAB9C4;
   }
   .btn:hover:after {
     opacity: 1;

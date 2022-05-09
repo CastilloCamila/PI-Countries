@@ -1,0 +1,40 @@
+.input{
+  outline: none;
+  border-color:  #08337B ;
+  border-radius: 8px;
+  padding: 0.25rem;
+  height: 35px;
+  width: 350px;
+  margin: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+}
+ 
+  
+
+.input:hover{
+  border:1px solid transparent;
+  border-bottom: 2px solid #DAB9C4;
+
+  border-radius: 0;
+ 
+  
+}
+
+.button{
+  text-decoration: none;
+  background-color: transparent;
+  padding: 0.25rem;
+  height: 45px;
+  width: 70px;
+  border-radius: 8px;
+  cursor: pointer;
+  border-color: #08337B;
+  transition: all 0.3s ease;
+  color: #08337B;
+}
+.button:hover{
+  background-color: #DAB9C4;
+  color: white;
+}
