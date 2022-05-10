@@ -206,7 +206,6 @@ export default function Addactivity() {
                         </div>
                         <label htmlFor="countriesAdded">Added countries</label>
                         <div className={style.addCountries}>
-
                             {
                                 addedCountries.map((country) => {
                                     return <>
@@ -216,9 +215,11 @@ export default function Addactivity() {
                                         </div>
                                     </>
                                 })
-                            }</div>
+                            }
+                        </div>
 
                         <button className={style.buttonActivity} type="submit" >Add Acivity</button>
+
                         <div className={style.alert}>
                             {activityAdded &&
                                 <p>{activityAdded}</p>
