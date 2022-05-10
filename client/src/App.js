@@ -1,14 +1,14 @@
 import './App.css';
 
 
-import CountryDetail from './components/home/countries/CountryDetail';
 
-import AddActivity from './components/home/activity/addActivity/AddActivity.jsx';
+import CountryDetail from './components/home/countries/countryDetail/countryDetail/CountryDetail';
+import AddActivity from './components/home/navBar/activity/addActivity/AddActivity';
 import LandingPage from './components/landingPage/LandingPage'
 import Home from './components/home/home/home/Home'
 import {Route} from 'react-router-dom';
 
-import NavBar from './components/home/navBar/navBar/NavBar.jsx';
+import NavBar from './components/home/navBar/nav/NavBar';
 function App() {
   return (
     <div className="App">

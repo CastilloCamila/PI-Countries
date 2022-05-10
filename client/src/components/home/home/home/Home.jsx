@@ -55,6 +55,7 @@ export default function Home() {
     }
     function paginate(pageNumber) {
         setCurrentPage(pageNumber)
+       
     }
 
     function nextPage() {
@@ -74,7 +75,7 @@ export default function Home() {
            
             <Filters paginate={paginate} />
             <AllCards  pagination={pagination} />
-            <Pagination totalCountries={filteredCountries.length} countriesPerPage={countriesPerPage} paginate={paginate} nextPage={nextPage} previusPage={previusPage} />
+            <Pagination totalCountries={filteredCountries.length} countriesPerPage={countriesPerPage} paginate={paginate} nextPage={nextPage} previusPage={previusPage} currentPage={currentPage} />
         </div>
     )
 }

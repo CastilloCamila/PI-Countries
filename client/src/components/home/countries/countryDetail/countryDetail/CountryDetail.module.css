@@ -1,0 +1,60 @@
+.card{
+    
+    margin: 0;
+    display: flex;
+    
+    
+}
+.card h1{
+    margin: 10px;
+}
+.card h3{
+    margin: 0;
+}
+.cardDetail{
+    box-shadow: 0px 5px 20px rgb(163, 163, 163),0px -5px 20px rgb(163, 163, 163),5px 0px 20px rgb(163, 163, 163);
+    margin:  1rem 0rem 1rem 6.5rem;
+    padding: 1rem;
+    width: 400px;
+    display: inline-block;
+    border-top-left-radius: 10px ;
+    border-bottom-left-radius:  10px ;
+
+}
+
+.cardDetail img{
+    width: 280px;
+    height: 210px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 30px rgb(165, 165, 165);
+}
+.activityDetail p{
+    margin:2px;
+}
+.cardDetail:hover img{
+    margin-left: 55px;
+    box-shadow: 0px 0px 25px rgb(165, 165, 165);
+}
+.cardDetail:hover{
+   
+}
+
+.activityDetail{    
+    box-shadow: 5px 5px 10px rgb(163, 163, 163),5px -5px 10px rgb(163, 163, 163),5px 0px 20px rgb(163, 163, 163);
+    
+    background-color: #b6b2b6da;
+    display: inline-block;
+    width: 100px;
+    margin: 1rem 1rem 1rem 0rem;
+    transition: all 0.3s ease;
+    color:white;
+    border-top-right-radius: 10px ;
+    border-bottom-right-radius:  10px ;
+    
+
+}
+.activityDetail:hover{
+    width: 445px;
+    background-color: #08337B;
+}
