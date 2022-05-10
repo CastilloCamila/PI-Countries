@@ -1,7 +1,9 @@
 
 import React,  { useState } from 'react';
 import style from './Pagination.module.css'
-const Pagination = ({ totalCountries, countriesPerPage, paginate, nextPage, previusPage, currentPage }) => {
+
+const Pagination = ({ totalCountries, countriesPerPage, paginate, nextPage, previusPage }) => {
+
     const pageNumbers = []
     const [inPage, setInPage] = useState('')
 

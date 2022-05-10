@@ -5,11 +5,13 @@ import {
     GET_ALL_ACTIVITIES,
     SEARCH_COUNTRY,
     FILTERED,
-    CLEAR_DETAIL
+    CLEAR_DETAIL,
+    UPDATE_PAGE
 } from "../actions/actionTypes.js";
 
 
 const incialState = {
+    currentPage:1,
     filteredCountries: {},
     countries: {},
     countryDetail: {},
@@ -52,6 +54,11 @@ const reducer = function (state = incialState, { type, payload }) {
             return {
                 ...state,
                 filteredCountries: payload
+            }
+            case UPDATE_PAGE:
+            return {
+                ...state,
+                currentPage: payload
             }
 
         case CLEAR_DETAIL:

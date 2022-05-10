@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getAllCountries, filtered } from '../../../../redux/actions/index.js'
+import { getAllCountries, updatePage } from '../../../../redux/actions/index.js'
 import style from './Home.module.css'
 
 
@@ -13,7 +13,8 @@ import AllCards from '../../countries/allCards/AllCards'
 import Search from '../../filters/search/Search.jsx'
 
 export default function Home() {
-    const [currentPage, setCurrentPage] = useState(1)
+    const currentPage=useSelector(state=>state.currentPage)
+    
     const [countriesPerPage] = useState(10)
 
     const dispatch = useDispatch()
@@ -54,16 +55,18 @@ export default function Home() {
         return filter
     }
     function paginate(pageNumber) {
-        setCurrentPage(pageNumber)
-       
+        console.log('numberrr', pageNumber)
+        dispatch(updatePage(pageNumber))
+        
     }
 
     function nextPage() {
-        setCurrentPage(currentPage + 1)
+        dispatch(updatePage(currentPage+1))
+       
     }
     function previusPage() {
         console.log('on prev')
-        if (indexLastCountry > 0) setCurrentPage(currentPage - 1)
+        if (indexLastCountry > 0)  dispatch(updatePage(currentPage-1))
     }
     //------paginate-------
     return (
