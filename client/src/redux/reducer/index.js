@@ -3,7 +3,7 @@ import {
     GET_COUNTRY_DETAIL,
     ADD_ACTIVITY,
     GET_ALL_ACTIVITIES,
-    SEARCH_COUNTRY,
+
     FILTERED,
     CLEAR_DETAIL,
     UPDATE_PAGE
@@ -45,11 +45,7 @@ const reducer = function (state = incialState, { type, payload }) {
                 ...state,
                 allActivities: payload
             }
-        case SEARCH_COUNTRY:
-            return {
-                ...state,
-                filteredCountries: payload
-            }
+
         case FILTERED:
             return {
                 ...state,

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL , ADD_ACTIVITY,GET_ALL_ACTIVITIES, SEARCH_COUNTRY, FILTERED,UPDATE_PAGE, CLEAR_DETAIL, FILTERED_BY_POPULATION} from './actionTypes.js'
+import { GET_ALL_COUNTRIES, GET_COUNTRY_DETAIL , ADD_ACTIVITY,GET_ALL_ACTIVITIES, FILTERED,UPDATE_PAGE, CLEAR_DETAIL, FILTERED_BY_POPULATION} from './actionTypes.js'
 
 export function getAllCountries() {
 
@@ -29,15 +29,11 @@ export function getAllActivities() {
     return dispatch=>{
         return axios.get(`http://localhost:3001/activity/allActivities`)
         .then(response=> dispatch({type:GET_ALL_ACTIVITIES, payload:response.data}))
+        .catch(error=>error)
     }
     
 }
-export function searchCountry(name){
-    return dispatch=>{
-        return axios.get(`http://localhost:3001/countries?name=${name}`)
-    .then(response=>dispatch({type:SEARCH_COUNTRY, payload:response.data}))
-    }
-}
+
 export function filtered(payload){
     return{
         type:FILTERED,
