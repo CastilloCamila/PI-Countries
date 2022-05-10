@@ -5,6 +5,7 @@
     background-color: #b6b2b6;
     justify-content: space-between;
     padding: 0.2rem 0.5rem;
+    box-shadow: 0px 25px 45px #b6b2b6bd;
 }
 .a{
 
@@ -22,7 +23,8 @@
   border-style: solid;
     background: transparent;
     border-radius: 8px;
-    border-color: #08337B;
+    
+    border: 1px solid #08337B;
     padding: 0.8rem;
     margin: 0.3rem;
     cursor: pointer;

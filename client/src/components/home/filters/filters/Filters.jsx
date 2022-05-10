@@ -2,8 +2,8 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 
-import { getAllCountries, filtered, getAllActivities } from "../../../redux/actions"
-
+import { getAllCountries, filtered, getAllActivities } from "../../../../redux/actions"
+import style from "./Filters.module.css"
 
 
 export default function Filters({paginate}) {
@@ -20,6 +20,7 @@ export default function Filters({paginate}) {
 
     useEffect(() => {
         dispatch(getAllActivities())
+        
     }, [])
     useEffect(() => {
         if (population !== '') {
@@ -113,11 +114,12 @@ export default function Filters({paginate}) {
         paginate(1)
     }
     return (
-        <div>
-
-            <label htmlFor="continent">Continent</label>
+        
+        <div className={style.conteinerFilters}>
+            <div className={`${style.divsConteiners} ${style.label} ${style.select}`}>
+            <label htmlFor="continent">Filter By Continent:</label>
             <select name="continent" onChange={e => setContinent(e.target.value)} id="">
-                <option value="DEFAULT">Select Continent</option>
+                <option value="DEFAULT">Select a Continent</option>
                 <option value="Africa">Africa</option>
                 <option value="Asia">Asia</option>
                 <option value="North America">North America</option>
@@ -127,25 +129,27 @@ export default function Filters({paginate}) {
                 <option value="Oceania">Oceania</option>
 
             </select>
-            <br />
-            <label htmlFor="population">Population</label>
+            </div>
+            <div className={style.divsConteiners}>
+            <label htmlFor="population">Filter By Population:</label>
             <select name="population" onChange={e => setPopulation(e.target.value)} id="">
-                <option value="DEFAULT">Select Type</option>
-                <option value="asc">asc</option>
-                <option value="desc">des</option>
+                <option value="DEFAULT">Order...</option>
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
             </select>
-            <br />
-            <label htmlFor="population">Alphabetical</label>
+            </div>
+            <div className={style.divsConteiners}>
+            <label htmlFor="population">Filter By Alphabetical:</label>
             <select name="population" onChange={e => setAlphabetical(e.target.value)} id="">
-                <option value="DEFAULT">Select Type</option>
-                <option value="asc">asc</option>
-                <option value="desc">des</option>
+                <option value="DEFAULT">Order...</option>
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
             </select>
-            <br />
-
-            <label htmlFor="activity">Seleccione los ActividD</label>
+            </div>
+            <div className={style.divsConteiners}>
+            <label htmlFor="activity">Filter By Activity:</label>
             <select name="activity" id='laAC' value={activity} onChange={(e) => setActivity(e.target.value)}>
-                <option value="DEFAULT">Select Activity</option>
+                <option value="DEFAULT">Select an Activity</option>
                 {
                     allActivities.map((act) => {
 
@@ -154,7 +158,8 @@ export default function Filters({paginate}) {
 
                 }
             </select>
-            <br /> <button onClick={() => reset()}>RESET</button>
+            </div>
+             <button className={style.button} onClick={() => reset()}>RESET FILTERS</button>
         </div>
 
     )

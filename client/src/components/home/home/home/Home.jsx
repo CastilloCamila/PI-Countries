@@ -2,18 +2,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getAllCountries, filtered } from '../../redux/actions/index.js'
+import { getAllCountries, filtered } from '../../../../redux/actions/index.js'
+import style from './Home.module.css'
 
 
+import Filters from "../../filters/filters/Filters.jsx";
 
-import Filters from "./filters/Filters.jsx";
-import Pagination from "./Pagination.jsx";
-import AllCards from './countries/allCards/AllCards'
-import Search from './filters/search/Search.jsx'
+import Pagination from "../pagination/Pagination.jsx";
+import AllCards from '../../countries/allCards/AllCards'
+import Search from '../../filters/search/Search.jsx'
 
 export default function Home() {
     const [currentPage, setCurrentPage] = useState(1)
-    const [countriesPerPage, setcountriesPerPage] = useState(10)
+    const [countriesPerPage] = useState(10)
 
     const dispatch = useDispatch()
 
@@ -26,11 +27,17 @@ export default function Home() {
     const indexFisrstCountry = currentPage * countriesPerPage
     const indexLastCountry = indexFisrstCountry - countriesPerPage
 
-    console.log('indexFisrstCountry', indexFisrstCountry)
-    console.log('indexLastCountry', indexLastCountry)
-    console.log('cantt', filteredCountries.length)
     useEffect(() => {
-        dispatch(getAllCountries())
+        console.log(filteredCountries.length)
+        if (filteredCountries.length==1) {
+          
+            console.log('comdsc')
+            dispatch(getAllCountries())
+            console.log('length',filteredCountries.length)
+        }
+        // return ()=>{
+        //     dispatch(filtered(filteredCountries))
+        // }
 
     }, [dispatch])
 
@@ -59,11 +66,14 @@ export default function Home() {
     }
     //------paginate-------
     return (
-        <div>
-            <h1>Home</h1>
-            <Search />
+        <div className={style.conteiner}>
+            <div className={style.search}> 
+
+                <Search className={style.searchBar} />
+            </div>
+           
             <Filters paginate={paginate} />
-            <AllCards pagination={pagination} />
+            <AllCards  pagination={pagination} />
             <Pagination totalCountries={filteredCountries.length} countriesPerPage={countriesPerPage} paginate={paginate} nextPage={nextPage} previusPage={previusPage} />
         </div>
     )

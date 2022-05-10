@@ -5,7 +5,7 @@ import CountryDetail from './components/home/countries/CountryDetail';
 
 import AddActivity from './components/home/activity/addActivity/AddActivity.jsx';
 import LandingPage from './components/landingPage/LandingPage'
-import Home from './components/home/Home'
+import Home from './components/home/home/home/Home'
 import {Route} from 'react-router-dom';
 
 import NavBar from './components/home/navBar/navBar/NavBar.jsx';

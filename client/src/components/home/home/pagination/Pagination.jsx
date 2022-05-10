@@ -6,7 +6,7 @@ const Pagination = ({ totalCountries, countriesPerPage, paginate, nextPage, prev
     for (let i = 2; i <= Math.ceil((totalCountries-9 ) / countriesPerPage)+1; i++) {
         pageNumbers.push(i)
 
-        console.log('numberos',i)
+ 
 
     }
     return (

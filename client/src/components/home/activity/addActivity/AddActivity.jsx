@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AddActivity } from "../../../../redux/actions";
-import { getAllActivities } from "../../../../redux/actions";
+
 import style from './AddActivity.module.css'
 
 
@@ -36,7 +36,7 @@ export default function Addactivity() {
     countries = findCountries(countries)
 
     useEffect(() => {
-        dispatch(getAllActivities())
+        
         return () => {
             setAddedCountries([])
             setActivity({

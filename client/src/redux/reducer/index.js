@@ -10,12 +10,12 @@ import {
 
 
 const incialState = {
-
+    filteredCountries: {},
     countries: {},
     countryDetail: {},
     activity: {},
     allActivities:[{}],
-    filteredCountries: {}
+    filteredCountries: [{}]
     
 
 

@@ -70,10 +70,9 @@
     border: none;
 }
 .buttonCountry{
-    border-style: solid;
+    border: 1px solid #DAB9C4;
     background: transparent;
     border-radius: 8px;
-    border-color: #DAB9C4;
 
     cursor: pointer;
     transition: all 0.3s ease;
@@ -115,10 +114,11 @@
   }
 
   .buttonActivity{
-    border-style: solid;
+    border: 1px solid #DAB9C4;
+
     background: transparent;
     border-radius: 12px;
-    border-color: #DAB9C4;
+
     cursor: pointer;
     transition: all 0.3s ease;
     outline: none;

@@ -3,31 +3,33 @@ import React from "react";
 import { Link } from "react-router-dom";
 import style from "./navBar.module.css"
 import logo from "../../../../img/logo.gif"
-export default function NavBar(){
-    return(
+export default function NavBar() {
+    return (
         <>
-        <nav className={style.nav} >
+            <nav className={style.nav} >
 
-            <a className={style.a} href='' > <img src={logo} alt="" width="150" height="60" /></a>
+                <a className={style.a} href='' > <img src={logo} alt="" width="150" height="60" /></a>
 
-            <div  className={style.div}>
-                <button className={style.btn}>
-                <Link   className={style.link} to='/home/activity'>
-                    Add an Activity
-                </Link>
-                </button>
-                <button className={style.btn}>
-                    <Link  className={style.link} to='/home'>Home</Link>
-                </button>
+                <div className={style.div}>
 
-                
+                    <button className={style.btn}>
+                        <Link className={style.link} to='/home'>Home</Link>
+                    </button>
+                    <button className={style.btn}>
+                        <Link className={style.link} to='/home/activity'>
+                            Add an Activity
+                        </Link>
+                    </button>
 
-                {/* <Search /> */}
 
-            </div>
 
-        </nav>
 
-    </>
+                    {/* <Search /> */}
+
+                </div>
+
+            </nav>
+
+        </>
     )
 }
