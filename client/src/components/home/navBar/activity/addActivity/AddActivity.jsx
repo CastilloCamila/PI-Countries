@@ -2,27 +2,28 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { AddActivity } from "../../../../../redux/actions";
+
 import style from './AddActivity.module.css'
 
-
+//-------Mapeo de countries para agregarles las actividades-----
 function findCountries(countries) {
     let countriesname = countries.map(country => {
         return { id: country.id, name: country.name }
     })
     return countriesname
-
 }
+//-------Mapeo de countries para agregarles las actividades-----
 const dificultiesValues = [1, 2, 3, 4, 5]
 
 export default function Addactivity() {
-
+    //---------- Estados--------
     const dispatch = useDispatch();
-
-    let countries = useSelector((state) => state.countries);
-    const [activityAdded, setActivityAdded] = useState('')
-
     const allActivities = useSelector((state) => state.allActivities)
+    const countries = useSelector((state) => state.countries);
 
+    const [activityAdded, setActivityAdded] = useState('')
+    const [errors, setErrors] = useState({})
+    const [addedCountries, setAddedCountries] = useState([])
     const [activity, setActivity] = useState({
         name: "",
         difficulty: "DEFAULT",
@@ -30,13 +31,13 @@ export default function Addactivity() {
         season: "DEFAULT",
         country: ''
     })
-    let [errors, setErrors] = useState({})
-    let [addedCountries, setAddedCountries] = useState([])
+    //---------- Estados--------
 
-    countries = findCountries(countries)
-
+    const foundCountries = findCountries(countries)
+    
+ 
     useEffect(() => {
-        
+
         return () => {
             setAddedCountries([])
             setActivity({
@@ -49,18 +50,20 @@ export default function Addactivity() {
             setActivityAdded('')
         }
     }, [dispatch])
+    // ---- funcion para manejo de errores-----
 
     function validate(activity) {
         let errors = {}
         if (activity.name === "") errors.name = 'A name is required'
+        if(/^\s/.test(activity.name)) errors.name = 'Not allow'
         if (/[`~,.<>;':"/[\]|{}()=_+-?¡!¿*{}´´¨´&%$#°]/.test(activity.name)) errors.name = 'Name not allowed especials characters or numbers'
         if (activity.difficulty === 'DEFAULT') errors.difficulty = 'You must to select a difficulty'
         if (activity.duration === 'DEFAULT') errors.duration = 'You must to select a duration'
         if (activity.season === 'DEFAULT') errors.season = 'You must to select a seasson'
-       
         return errors
-
     }
+    // -------------------------------
+    //----- agregar y quitar paises-----
 
     function addCountry() {
         if (activity.country === "") setErrors({ ...errors, country: 'You must to select a country' })
@@ -87,8 +90,8 @@ export default function Addactivity() {
         setAddedCountries(filteredCountries)
 
     }
-
-
+    //---------------------------------------------
+    //----- Manejo de cambios en el fomulario----
     function handleOnChange(e) {
         setActivity({
             ...activity,
@@ -101,6 +104,8 @@ export default function Addactivity() {
             }
         ))
     }
+    //---------------------------------------------
+    // ------- Manejo de submi----------------
     function handleOnSubmit(event) {
         event.preventDefault()
         if (Object.keys(errors).length === 0) {
@@ -113,6 +118,7 @@ export default function Addactivity() {
                     season: activity.season,
                     countries: addedCountries
                 }
+                dispatch(AddActivity(activitytoSend))
                 setActivityAdded('The activity was created successfully')
                 setAddedCountries([])
                 setActivity({
@@ -122,18 +128,21 @@ export default function Addactivity() {
                     season: "DEFAULT",
                     country: ''
                 })
-                dispatch(AddActivity(activitytoSend))
+                
 
             }
         } else {
             setActivityAdded('The activity can not be created')
         }
     }
+
+
     return (
         <>
             <div className={style.background}>
                 <div className={style.divform}>
                     <form className={style.form} onSubmit={handleOnSubmit}>
+                        {/* Input Name */}
                         <div className={style.name}>
                             <label htmlFor="name">Name</label>
                             <input placeholder="Name of the activity" type="text" name="name" value={activity.name} onChange={handleOnChange} />
@@ -142,6 +151,7 @@ export default function Addactivity() {
                                 <p className={style.p}>{errors.name}</p>
                             }
                         </div>
+                        {/* Select Difficulty*/}
                         <div className={style.difficulty}>
                             <label htmlFor="difficulty">Dificulty</label>
 
@@ -157,6 +167,7 @@ export default function Addactivity() {
                                 <p className={style.p}>{errors.difficulty}</p>
                             }
                         </div>
+                        {/* Select Duration*/}
                         <div className={style.duration}>
                             <label htmlFor="duration">Duration</label>
 
@@ -172,7 +183,7 @@ export default function Addactivity() {
                                 <p className={style.p}>{errors.duration}</p>
                             }
                         </div>
-
+                        {/* Select Season*/}
                         <div className={style.season}>
                             <label htmlFor="season">Season</label>
                             <select className={style.select} name="season" id="" value={activity.season} onChange={handleOnChange}>
@@ -186,20 +197,22 @@ export default function Addactivity() {
                                 <p className={style.p}>{errors.season}</p>
                             }
                         </div>
+
+                        {/* Select Country*/}
                         <div className={style.country}>
                             <label htmlFor="country">Select Countries</label>
                             <input placeholder="Select Countries" list="countries" name='country' type="search" value={activity.country} onChange={handleOnChange} />
 
                             <datalist id='countries'>
                                 {
-                                    countries.map((country) => {
+                                    foundCountries.map((country) => {
 
                                         return <option value={country.id}> {country.name}</option>
                                     })
 
                                 }
                             </datalist>
-                            <button className={`${style.buttonCountry} ${style.add}`} type="button" onClick={()=>!errors.country && addCountry()}>Add country</button>
+                            <button className={`${style.buttonCountry} ${style.add}`} type="button" onClick={() => !errors.country && addCountry()}>Add country</button>
                             {errors.country &&
                                 <p className={style.p}>{errors.country}</p>
                             }

@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 
 import { getAllCountries, filtered, getAllActivities } from "../../../../redux/actions"
+
 import style from "./Filters.module.css"
 
-
 export default function Filters({paginate}) {
+    //------- estados y variables----
     const dispatch = useDispatch()
-
 
     const filteredCountries = useSelector((state) => state.filteredCountries)
     const allActivities = useSelector(state => state.allActivities)
@@ -17,6 +17,7 @@ export default function Filters({paginate}) {
     const [continent, setContinent] = useState('')
     const [alphabetical, setAlphabetical] = useState('')
     const [activity, setActivity] = useState('')
+    //------------------------------
 
     useEffect(() => {
         dispatch(getAllActivities())
@@ -26,9 +27,7 @@ export default function Filters({paginate}) {
         if (population !== '') {
             if (population === 'DEFAULT') {
                 setPopulation('')
-
             }
-
             if (population === 'asc') {
 
                 const filterPopulation = filteredCountries.sort((a, b) => a.population - b.population)
@@ -39,14 +38,12 @@ export default function Filters({paginate}) {
 
                 const filterPopulation = filteredCountries.sort((a, b) => b.population - a.population)
                 dispatch(filtered({}))
-
                 dispatch(filtered(filterPopulation))
             }
         }
 
         if (continent !== '') {
             if (continent === 'DEFAULT') {
-
                 dispatch(getAllCountries())
                 paginate(1)
                 setContinent('')
@@ -56,15 +53,12 @@ export default function Filters({paginate}) {
             dispatch(filtered({}))
 
             return dispatch(filtered(filterContinent))
-
         }
 
 
 
         if (alphabetical !== '') {
             if (alphabetical === 'DEFAULT') {
-
-
                 setAlphabetical('')
             }
             if (alphabetical === 'asc') {
@@ -79,7 +73,6 @@ export default function Filters({paginate}) {
                 dispatch(filtered(filterAlphabetical))
 
             } else if (alphabetical === 'desc') {
-
                 const filterAlphabetical = filteredCountries.sort((a, b) => {
                     if (a.name < b.name) return -1
                     if (a.name > b.name) return 1
@@ -88,7 +81,6 @@ export default function Filters({paginate}) {
 
                 dispatch(filtered({}))
                 dispatch(filtered(filterAlphabetical))
-
             }
         }
         if (activity !== '') {

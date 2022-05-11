@@ -1,29 +1,29 @@
 import {useState} from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
-import style from './Search.module.css'
 import { filtered } from '../../../../redux/actions'
 import helpCall from '../../../../helpers/HelpCall'
+
+import style from './Search.module.css'
+
 export default function Search() {
     const dispatch = useDispatch()
 
     const [errors,setErrors]=useState('')
     const [search,setSearch]=useState({search:''})
+
     function handleOnChange(e) {
         setSearch({...search,search:e.target.value})
-        setErrors('')
-        
+        setErrors('')  
     }
 
     function handleOnsubmit(event){
         event.preventDefault()
-        console.log('submitt')
+
         helpCall(`/countries?name=${search.search}`)
         .then(res=>dispatch(filtered(res)))
         .catch(error=>
-            {setErrors(error.response.data.msg);
-            
-            })
+            {setErrors(error.response.data.msg)})
         setErrors('')
         setSearch({...search,searchs:''})
 
