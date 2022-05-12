@@ -15,7 +15,7 @@ sequelize.define('activity',{
     {
         type:DataTypes.ENUM('1','2','3','4','5'),
         defaultValue:'1',
-        defaultValue:null
+        
     },
     duration:{
         type:DataTypes.STRING,
