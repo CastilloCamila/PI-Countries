@@ -12,7 +12,6 @@ export default function Filters() {
 
     const filteredCountries = useSelector((state) => state.filteredCountries)
     const allActivities = useSelector(state => state.allActivities)
-    const countries = useSelector(state => state.countries)
 
     const [population, setPopulation] = useState('')
     const [continent, setContinent] = useState('')
@@ -22,8 +21,8 @@ export default function Filters() {
 
     useEffect(() => {
         dispatch(getAllActivities())
+    }, [dispatch])
 
-    }, [])
     useEffect(() => {
         if (population !== '') {
         
@@ -78,14 +77,14 @@ export default function Filters() {
         }
         if (activity !== '') {
              
-                const filterActivies = allActivities.find(act => act.id == activity)
+                const filterActivies = allActivities.find(act => act.id === activity)
                 dispatch(filtered(filterActivies.countries))
             
         }
 
 
 
-    }, [ population, continent, alphabetical, activity])
+    }, [dispatch, population, continent, alphabetical, activity, allActivities, filteredCountries])
 
     function reset() {
 

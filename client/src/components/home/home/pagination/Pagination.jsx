@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Pagination.module.css'
 import { updatePage } from '../../../../redux/actions';
@@ -25,7 +25,7 @@ export default function Pagination({ totalCountries, countriesPerPage, indexLast
         }
         let current = document.getElementById(currentPage);
         current.classList.add(style['currentPage'])
-    }, [currentPage])
+    }, [currentPage,totalCountries,countriesPerPage])
 
 
     function paginate(number) {
@@ -67,7 +67,7 @@ export default function Pagination({ totalCountries, countriesPerPage, indexLast
             <button onClick={() => paginate(1)} id='1' className={style.currentPage}> 1</button>
             {
                 pageNumbers.map(number => {
-                    return <button id={number} onClick={() => paginate(number)}> {number}</button>
+                    return <button key={number} id={number} onClick={() => paginate(number)}> {number}</button>
                 })
             }
             <button onClick={() => nextPage()}>

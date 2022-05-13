@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getAllCountries, updatePage } from '../../../../redux/actions/index.js'
+import { getAllCountries } from '../../../../redux/actions/index.js'
 import style from './Home.module.css'
 
 
@@ -29,14 +29,14 @@ export default function Home() {
     //-----------------------------
 
     useEffect(() => {
-        if (filteredCountries.length === 1) {
+        if (filteredCountries.length === 1 && Object.keys(filteredCountries[0]).length===0) {
             dispatch(getAllCountries())
         }
-    }, [dispatch])
+    }, [dispatch,filteredCountries])
 
     //------paginate-------
 
-    if (currentPage == 1) {
+    if (currentPage === 1) {
         filter = filteredCountries.slice(indexLastCountry, 9)
     } else { filter = filteredCountries.slice(indexLastCountry - 1, indexFisrstCountry - 1) }
 

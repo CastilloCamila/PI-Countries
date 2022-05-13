@@ -25,6 +25,7 @@ export default function Search() {
             dispatch(filtered(response))
             setErrors('')
             setSearch({ ...search, searchs: '' })
+            
         } catch (error) {
 
             setErrors(error.response.data.msg)
