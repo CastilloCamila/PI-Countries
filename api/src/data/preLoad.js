@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const { Country, Activity } = require('../db.js');
+const { Country } = require('../db.js');
 
 function dataBaseLoad() {
   axios.get('https://restcountries.com/v3/all')
@@ -20,28 +20,6 @@ function dataBaseLoad() {
         }
       })
       Country.bulkCreate(apiCountries)
-
-
     })
 }
-function loadActivities() {
-  const act1={
-    name: "correr",
-    difficulty: "2",
-    duration: "1 hour",
-    season: "Winter",
-    countries:["BWA", "ARG"]
-
-  }
-  const act2={
-    name: "caminar",
-    difficulty: "2",
-    duration: "1 hour",
-    season: "Winter",
-    countries:["ARG"]
-
-  }
-  const array=[act1,act2]
-  Activity.bulkCreate(array)
-}
-module.exports = {dataBaseLoad,loadActivities}
+module.exports = dataBaseLoad

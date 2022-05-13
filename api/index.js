@@ -20,13 +20,12 @@
 
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const {dataBaseLoad, loadActivities}=require('./src/data/preLoad.js')
+const dataBaseLoad=require('./src/data/preLoad.js')
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001');
       dataBaseLoad()
-      loadActivities()
     console.log('datos cargados')
   });
 });
