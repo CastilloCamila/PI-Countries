@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { filtered } from '../../../../redux/actions'
@@ -9,28 +9,31 @@ import style from './Search.module.css'
 export default function Search() {
     const dispatch = useDispatch()
 
-    const [errors,setErrors]=useState('')
-    const [search,setSearch]=useState({search:''})
+    const [errors, setErrors] = useState('')
+    const [search, setSearch] = useState({ search: '' })
 
     function handleOnChange(e) {
-        setSearch({...search,search:e.target.value})
-        setErrors('')  
-    }
-
-    function handleOnsubmit(event){
-        event.preventDefault()
-
-        helpCall(`/countries?name=${search.search}`)
-        .then(res=>dispatch(filtered(res)))
-        .catch(error=>
-            {setErrors(error.response.data.msg)})
+        setSearch({ ...search, search: e.target.value })
         setErrors('')
-        setSearch({...search,searchs:''})
-
     }
-    return(
+
+    async function handleOnsubmit(event) {
+        event.preventDefault()
+        try {
+            const response = await helpCall(`/countries?name=${search.search}`)
+            console.log(response)
+            dispatch(filtered(response))
+            setErrors('')
+            setSearch({ ...search, searchs: '' })
+
+        } catch (error) {
+            console.log('Errror', error.response.data.msg)
+            setErrors(error.response.data.msg)
+        }
+    }
+    return (
         <div className={style.form}>
-            <input className={style.input} placeholder='Search a Country' type="text" name="search" value={search.search} onChange={(e) => handleOnChange(e) } />
+            <input className={style.input} placeholder='Search a Country' type="text" name="search" value={search.search} onChange={(e) => handleOnChange(e)} />
             <button className={style.button} onClick={handleOnsubmit}>Search</button>
             {errors &&
                 <p>{errors}</p>

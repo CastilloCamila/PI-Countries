@@ -4,3 +4,7 @@
 .detail{
     margin-left: 1rem;
 }
+.detail h2{
+    font-family: "Open Sans";
+    font-weight: 450;
+}

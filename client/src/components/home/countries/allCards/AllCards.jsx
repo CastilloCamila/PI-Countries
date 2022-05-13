@@ -1,27 +1,30 @@
-import React, { useEffect, useState } from "react";
-import {  useSelector } from 'react-redux'
+import React from "react";
 
-import style from './AllCards.module.css'
 import CardCountry from '../cardCountry/CardCountry'
 
-export default function AllCards({ pagination }) {
-    const filteredCountries = useSelector((state) => state.filteredCountries)
+import style from './AllCards.module.css'
+import imgLoading from '../../../../img/loadingMundi.gif'
 
+export default function AllCards({ filter }) {
     return (
-        <>
-            <div className={style.conteiner}>
- 
+        <> {
+                filter.length >= 1 && filter[0].id ?
 
-                {
-                    filteredCountries.length > 0 ? pagination().map((country) => (
-                        <>
-                            <CardCountry name={country.name} image={country.image} continent={country.continent} id={country.id} key={country.id} />
-                        </>
-                    ))
-                        : <h2>Cargandop</h2>
-                }
-
-            </div>
+                    <div className={style.conteiner}>
+                        {
+                            filter?.map((country) => (
+                                <CardCountry name={country.name} image={country.image} continent={country.continent} id={country.id} key={country.id} />
+                            ))}
+                    </div>
+                    : (
+                    <>
+                        <div className={style.loading}>
+                            <img src={imgLoading} alt="" />
+                            <h1>Cargando</h1>
+                        </div>
+                    </>
+                    )
+            }
         </>
     )
 }

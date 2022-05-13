@@ -20,6 +20,8 @@
 }
 
 .button{
+  font-family: "Open Sans";
+  font-weight: 300;
   text-decoration: none;
   background-color: transparent;
   padding: 0.25rem;

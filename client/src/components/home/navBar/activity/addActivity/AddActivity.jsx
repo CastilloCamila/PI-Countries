@@ -57,16 +57,16 @@ export default function Addactivity() {
         if (activity.name === "") errors.name = 'A name is required'
         if(/^\s/.test(activity.name)) errors.name = 'Not allow'
         if (/[`~,.<>;':"/[\]|{}()=_+-?¡!¿*{}´´¨´&%$#°]/.test(activity.name)) errors.name = 'Name not allowed especials characters or numbers'
-        if (activity.difficulty === 'DEFAULT') errors.difficulty = 'You must to select a difficulty'
-        if (activity.duration === 'DEFAULT') errors.duration = 'You must to select a duration'
-        if (activity.season === 'DEFAULT') errors.season = 'You must to select a seasson'
+        if (activity.difficulty === 'DEFAULT') errors.difficulty = 'You must select a difficulty'
+        if (activity.duration === 'DEFAULT') errors.duration = 'You must select a duration'
+        if (activity.season === 'DEFAULT') errors.season = 'You must select a seasson'
         return errors
     }
     // -------------------------------
     //----- agregar y quitar paises-----
 
     function addCountry() {
-        if (activity.country === "") setErrors({ ...errors, country: 'You must to select a country' })
+        if (activity.country === "") setErrors({ ...errors, country: 'You must select a country' })
         else {
             if (addedCountries.includes(activity.country)) {
                 setErrors({ ...errors, country: 'You are already selected this country' })

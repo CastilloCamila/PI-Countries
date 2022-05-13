@@ -14,12 +14,17 @@
     top:20rem;
     left:3rem;
 }
+.div  h1 {
+  font-family: "Open Sans";
+  font-weight: 500;
+}
 .btn{
     text-decoration: none;
     justify-self: center;
     background-color: transparent;
     padding: 0.1rem 2rem;
-    
+    font-family: "Open Sans";
+    font-weight: 300;
     border-radius: 8px;
     cursor: pointer;
     border-color: #08337B;

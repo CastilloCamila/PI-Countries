@@ -7,10 +7,14 @@
     margin: 0rem 0.5rem;
 }
 .divsConteiners label{
+    font-family: "Open Sans";
+    font-weight: 450;
     margin-right: 0.5rem;
     color: #08337B;
 }
 .divsConteiners select{
+    font-family: "Open Sans";
+    font-weight: 300;
     background-color: transparent;
     border: none;
     border-bottom: 3px solid #08337B;
@@ -30,6 +34,8 @@
     border: none;
 }
 .button{
+    font-family: "Open Sans";
+    font-weight: 300;
     border: 1px solid #08337B;
     border-radius: 8px;
     background: transparent;

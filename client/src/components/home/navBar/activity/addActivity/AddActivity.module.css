@@ -31,9 +31,13 @@
 }
 .form label{
     display: block;
+    font-family: "Open Sans";
+    font-weight: 550;
 }
 
  .form .p{
+  font-family: "Open Sans";
+  font-weight: 200;
     display: inline-block;
     font-size: x-small;
     color: red;
@@ -56,6 +60,8 @@
     margin: 0.5rem;
 }
 .select{
+  font-family: "Open Sans";
+  font-weight: 300;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #08337B;
@@ -67,13 +73,16 @@
    
 }
 .select option{
+  font-family: "Open Sans";
+  font-weight: 300;
     border: none;
 }
 .buttonCountry{
     border: 1px solid #DAB9C4;
     background: transparent;
     border-radius: 8px;
-
+    font-family: "Open Sans";
+    font-weight: 300;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -115,7 +124,8 @@
 
   .buttonActivity{
     border: 1px solid #DAB9C4;
-
+    font-family: "Open Sans";
+    font-weight: 300;
     background: transparent;
     border-radius: 12px;
 
@@ -133,8 +143,7 @@
   .addCountries{
     overflow-y: scroll;
     height: 85px;
-    
-   
+
   }
   .countryAdd{
       display: inline-block;

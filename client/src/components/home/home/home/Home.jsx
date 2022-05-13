@@ -18,30 +18,45 @@ export default function Home() {
     const filteredCountries = useSelector((state) => state.filteredCountries)
     
     const [countriesPerPage] = useState(10)
+    const [isLoading, setIsLoading]=useState()
 
     const dispatch = useDispatch()
 
-    let filter = null
+    let filter = []
+    
     const indexFisrstCountry = currentPage * countriesPerPage
     const indexLastCountry = indexFisrstCountry - countriesPerPage
     //-----------------------------
 
-    useEffect(() => {
-        if (filteredCountries.length==1) {
+    useEffect(() => {   
+        if (filteredCountries.length===1) {
             dispatch(getAllCountries())
         }
     }, [dispatch])
     
     //------paginate-------
-    function pagination() {
+ 
         if (currentPage == 1) {
-            filter = filteredCountries.slice(indexLastCountry, 9)
-        } else { filter = filteredCountries.slice(indexLastCountry - 1, indexFisrstCountry - 1) }
-        return filter
-    }
-    function paginate(pageNumber) {
-        dispatch(updatePage(pageNumber))
-    }
+             filter = filteredCountries.slice(indexLastCountry, 9)
+        } else {  filter = filteredCountries.slice(indexLastCountry - 1, indexFisrstCountry - 1) }
+         
+    
+    // function paginate(pageNumber) {
+
+    //     dispatch(updatePage(pageNumber))
+
+    // }
+
+    // const paginat = (pageNumber) => {
+    //     for (let i = 1; i <= Math.ceil(recipes.length / recipePerPage); i++) {
+    //       let page = document.getElementById(i);
+    //       page.classList.remove("currentPage");
+    //     }
+    //     let current = document.getElementById(pageNumber);
+    //     current.classList.add("currentPage")
+    //     setCurrentPage(pageNumber)
+    //   }
+
 
     function nextPage() {
         dispatch(updatePage(currentPage+1))
@@ -56,9 +71,9 @@ export default function Home() {
             <div className={style.search}> 
                 <Search className={style.searchBar} />
             </div>
-            <Filters paginate={paginate} />
-            <AllCards  pagination={pagination} />
-            <Pagination totalCountries={filteredCountries.length} countriesPerPage={countriesPerPage} paginate={paginate} nextPage={nextPage} previusPage={previusPage} currentPage={currentPage} />
+            <Filters />
+            <AllCards  filter={filter} isLoading={isLoading} />
+            <Pagination totalCountries={filteredCountries.length} countriesPerPage={countriesPerPage} nextPage={nextPage} previusPage={previusPage} currentPage={currentPage} />
         </div>
     )
 }

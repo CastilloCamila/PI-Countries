@@ -2,11 +2,11 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 
-import { getAllCountries, filtered, getAllActivities } from "../../../../redux/actions"
+import { getAllCountries, filtered, getAllActivities, updatePage } from "../../../../redux/actions"
 
 import style from "./Filters.module.css"
 
-export default function Filters({paginate}) {
+export default function Filters() {
     //------- estados y variables----
     const dispatch = useDispatch()
 
@@ -44,8 +44,8 @@ export default function Filters({paginate}) {
 
         if (continent !== '') {
             if (continent === 'DEFAULT') {
-                dispatch(getAllCountries())
-                paginate(1)
+
+                
                 setContinent('')
             }
             const filterContinent = filteredCountries.filter(country => country.continent === continent)
@@ -88,7 +88,7 @@ export default function Filters({paginate}) {
                 setActivity('')
             } else {
                 const filterActivies = allActivities.find(act => act.id == activity)
-
+                console.log('actividades', filterActivies)
                 dispatch(filtered(filterActivies.countries))
             }
         }
@@ -98,12 +98,13 @@ export default function Filters({paginate}) {
     }, [null, population, continent, alphabetical, activity])
 
     function reset() {
+        
         setPopulation('')
         setActivity('')
         setAlphabetical('')
         setContinent('')
+        dispatch(updatePage(1))
         dispatch(getAllCountries())
-        paginate(1)
     }
     return (
         
