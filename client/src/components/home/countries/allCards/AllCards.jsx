@@ -8,7 +8,7 @@ import imgLoading from '../../../../img/loadingMundi.gif'
 export default function AllCards({ filter }) {
     return (
         <> {
-            filter.length >= 1 && filter[0].id ?
+            filter[0].id ?
 
                 <div className={style.conteiner}>
                     {
@@ -24,7 +24,7 @@ export default function AllCards({ filter }) {
                         </div>
                     </>
                 )
-        }
+            }
         </>
     )
 }

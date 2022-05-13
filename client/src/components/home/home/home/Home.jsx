@@ -29,7 +29,7 @@ export default function Home() {
     //-----------------------------
 
     useEffect(() => {
-        if (filteredCountries.length === 1 && Object.keys(filteredCountries[0]).length===0) {
+        if (Object.keys(filteredCountries[0]).length===0) {
             dispatch(getAllCountries())
         }
     }, [dispatch,filteredCountries])
