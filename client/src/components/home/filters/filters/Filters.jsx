@@ -12,6 +12,7 @@ export default function Filters() {
 
     const filteredCountries = useSelector((state) => state.filteredCountries)
     const allActivities = useSelector(state => state.allActivities)
+    const countries = useSelector(state => state.countries)
 
     const [population, setPopulation] = useState('')
     const [continent, setContinent] = useState('')
@@ -25,9 +26,7 @@ export default function Filters() {
     }, [])
     useEffect(() => {
         if (population !== '') {
-            if (population === 'DEFAULT') {
-                setPopulation('')
-            }
+        
             if (population === 'asc') {
 
                 const filterPopulation = filteredCountries.sort((a, b) => a.population - b.population)
@@ -43,11 +42,7 @@ export default function Filters() {
         }
 
         if (continent !== '') {
-            if (continent === 'DEFAULT') {
-
-
-                setContinent('')
-            }
+            
             const filterContinent = filteredCountries.filter(country => country.continent === continent)
             setContinent('')
             dispatch(filtered({}))
@@ -58,9 +53,7 @@ export default function Filters() {
 
 
         if (alphabetical !== '') {
-            if (alphabetical === 'DEFAULT') {
-                setAlphabetical('')
-            }
+            
             if (alphabetical === 'asc') {
 
                 const filterAlphabetical = filteredCountries.sort((a, b) => {
@@ -84,18 +77,15 @@ export default function Filters() {
             }
         }
         if (activity !== '') {
-            if (activity === 'DEFAULT') {
-                setActivity('')
-            } else {
+             
                 const filterActivies = allActivities.find(act => act.id == activity)
-
                 dispatch(filtered(filterActivies.countries))
-            }
+            
         }
 
 
 
-    }, [null, population, continent, alphabetical, activity])
+    }, [ population, continent, alphabetical, activity])
 
     function reset() {
 
@@ -112,7 +102,7 @@ export default function Filters() {
             <div className={`${style.divsConteiners} ${style.label} ${style.select}`}>
                 <label htmlFor="continent">Filter By Continent:</label>
                 <select name="continent" onChange={e => setContinent(e.target.value)} id="">
-                    <option value="DEFAULT">Select a Continent</option>
+                    <option value="">Select a Continent</option>
                     <option value="Africa">Africa</option>
                     <option value="Asia">Asia</option>
                     <option value="North America">North America</option>
@@ -126,15 +116,15 @@ export default function Filters() {
             <div className={style.divsConteiners}>
                 <label htmlFor="population">Filter By Population:</label>
                 <select name="population" onChange={e => setPopulation(e.target.value)} id="">
-                    <option value="DEFAULT">Order...</option>
+                    <option value="">Order...</option>
                     <option value="asc">Ascending</option>
                     <option value="desc">Descending</option>
                 </select>
             </div>
             <div className={style.divsConteiners}>
-                <label htmlFor="population">Filter By Alphabetical:</label>
-                <select name="population" onChange={e => setAlphabetical(e.target.value)} id="">
-                    <option value="DEFAULT">Order...</option>
+                <label htmlFor="alphabetical">Filter By Alphabetical:</label>
+                <select name="alphabetical" onChange={e => setAlphabetical(e.target.value)} id="">
+                    <option value="">Order...</option>
                     <option value="asc">Ascending</option>
                     <option value="desc">Descending</option>
                 </select>

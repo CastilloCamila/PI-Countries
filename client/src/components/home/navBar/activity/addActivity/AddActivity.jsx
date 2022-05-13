@@ -103,6 +103,7 @@ export default function Addactivity() {
                 [e.target.name]: e.target.value
             }
         ))
+        setActivityAdded('')
     }
     //---------------------------------------------
     // ------- Manejo de submi----------------

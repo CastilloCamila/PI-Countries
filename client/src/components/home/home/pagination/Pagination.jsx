@@ -33,13 +33,17 @@ export default function Pagination({ totalCountries, countriesPerPage, indexLast
     }
 
     function nextPage() {
-        for (let i = 1; i <= Math.ceil(((totalCountries - 9) / countriesPerPage) + 1); i++) {
-            let page = document.getElementById(i);
-            page.classList.remove(style['currentPage']);
+        if (currentPage < Math.ceil(((totalCountries - 9) / countriesPerPage) + 1)) {
+
+            console.log('ress', Math.ceil(((totalCountries - 9) / countriesPerPage) + 1))
+            for (let i = 1; i <= Math.ceil(((totalCountries - 9) / countriesPerPage) + 1); i++) {
+                let page = document.getElementById(i);
+                page.classList.remove(style['currentPage']);
+            }
+            let current = document.getElementById(currentPage + 1);
+            current.classList.add(style['currentPage'])
+            dispatch(updatePage(currentPage + 1))
         }
-        let current = document.getElementById(currentPage + 1);
-        current.classList.add(style['currentPage'])
-        dispatch(updatePage(currentPage + 1))
     }
 
     function previusPage() {
