@@ -20,7 +20,7 @@ export default function Pagination({ totalCountries, countriesPerPage, indexLast
     useEffect(() => {
         for (let i = 1; i <= Math.ceil(((totalCountries - 9) / countriesPerPage) + 1); i++) {
             let page = document.getElementById(i);
-            console.log('pagee', page)
+
             page.classList.remove(style['currentPage']);
         }
         let current = document.getElementById(currentPage);
@@ -46,7 +46,6 @@ export default function Pagination({ totalCountries, countriesPerPage, indexLast
         if (indexLastCountry > 0) {
             for (let i = 1; i <= Math.ceil(((totalCountries - 9) / countriesPerPage) + 1); i++) {
                 let page = document.getElementById(i);
-                console.log('pagee', page)
                 page.classList.remove(style['currentPage']);
             }
             let current = document.getElementById(currentPage - 1);

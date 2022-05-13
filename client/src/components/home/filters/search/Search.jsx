@@ -21,13 +21,12 @@ export default function Search() {
         event.preventDefault()
         try {
             const response = await helpCall(`/countries?name=${search.search}`)
-            console.log(response)
+
             dispatch(filtered(response))
             setErrors('')
             setSearch({ ...search, searchs: '' })
-
         } catch (error) {
-            console.log('Errror', error.response.data.msg)
+
             setErrors(error.response.data.msg)
         }
     }

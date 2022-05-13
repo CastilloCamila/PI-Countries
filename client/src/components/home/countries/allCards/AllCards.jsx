@@ -8,23 +8,23 @@ import imgLoading from '../../../../img/loadingMundi.gif'
 export default function AllCards({ filter }) {
     return (
         <> {
-                filter.length >= 1 && filter[0].id ?
+            filter.length >= 1 && filter[0].id ?
 
-                    <div className={style.conteiner}>
-                        {
-                            filter?.map((country) => (
-                                <CardCountry name={country.name} image={country.image} continent={country.continent} id={country.id} key={country.id} />
-                            ))}
-                    </div>
-                    : (
+                <div className={style.conteiner}>
+                    {
+                        filter?.map((country) => (
+                            <CardCountry name={country.name} image={country.image} continent={country.continent} id={country.id} key={country.id} />
+                        ))}
+                </div>
+                : (
                     <>
                         <div className={style.loading}>
                             <img src={imgLoading} alt="" />
                             <h1>Cargando</h1>
                         </div>
                     </>
-                    )
-            }
+                )
+        }
         </>
     )
 }

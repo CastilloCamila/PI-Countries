@@ -48,7 +48,7 @@ export default function Home() {
                 <Search className={style.searchBar} />
             </div>
             <Filters />
-            <AllCards filter={filter}/>
+            <AllCards filter={filter} />
             <Pagination totalCountries={filteredCountries.length} countriesPerPage={countriesPerPage} indexLastCountry={indexLastCountry} />
         </div>
     )
