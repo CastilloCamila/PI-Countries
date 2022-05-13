@@ -51,9 +51,6 @@
     margin-left: 55px;
     box-shadow: 0px 0px 25px rgb(165, 165, 165);
 }
-.cardDetail:hover{
-   
-}
 
 .activityDetail{    
     box-shadow: 5px 5px 10px rgb(163, 163, 163),5px -5px 10px rgb(163, 163, 163),5px 0px 20px rgb(163, 163, 163);
