@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import {useHistory} from 'react-router-dom'
 import { AddActivity } from "../../../../../redux/actions";
-
+import Swal from 'sweetalert2'
 import style from './AddActivity.module.css'
 
 //-------Mapeo de countries para agregarles las actividades-----
@@ -20,6 +20,7 @@ export default function Addactivity() {
     const dispatch = useDispatch();
     const allActivities = useSelector((state) => state.allActivities)
     const countries = useSelector((state) => state.countries);
+    const history= useHistory()
 
     const [activityAdded, setActivityAdded] = useState('')
     const [errors, setErrors] = useState({})
@@ -120,7 +121,6 @@ export default function Addactivity() {
                     countries: addedCountries
                 }
                 dispatch(AddActivity(activitytoSend))
-                setActivityAdded('The activity was created successfully')
                 setAddedCountries([])
                 setActivity({
                     name: "",
@@ -129,7 +129,13 @@ export default function Addactivity() {
                     season: "DEFAULT",
                     country: ''
                 })
-                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'The activity was created successfully',
+                    showConfirmButton: false,
+                    timer: 2000
+                  })
+                history.push('/home')
 
             }
         } else {
