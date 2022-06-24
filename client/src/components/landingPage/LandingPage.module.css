@@ -78,4 +78,7 @@
   .link{
     text-decoration: none;
     color: #08337B;}
+    .link:hover{
+      color: white;
+    }
 
