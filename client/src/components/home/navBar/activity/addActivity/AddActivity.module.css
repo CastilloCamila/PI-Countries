@@ -17,11 +17,22 @@
   margin-top: 2rem;
     background-color:rgb(255, 255, 255);
     border-radius: 8px;
-    display: block;
+    display: flex;
     box-shadow: 0 0 20px rgba(94, 88, 88, 0.884);
     height: 490px;
     width: 550px;
 }
+
+@media only screen and (max-width: 600px){
+  .background .divform{ 
+    height: 80vh;
+   width: 300px;
+  }
+  .form .formselect{
+    margin : 1rem 0rem 1.5rem
+  }
+}
+
 .form{
     display: inline-block;
     align-items: flex-start;
@@ -54,7 +65,7 @@
 }
 .form input:hover  {
     
-    border-bottom: 2px solid #DAB9C4;
+    border-bottom: 2px solid #b6b2b6bd;
 }
 .form div{
     margin: 0.5rem;
@@ -69,7 +80,7 @@
     transition: all 0.3s ease;
 }
 .select:hover{
-    border-bottom: 1px solid #DAB9C4;
+    border-bottom: 1px solid #b6b2b6bd;
    
 }
 .select option{
@@ -78,7 +89,7 @@
     border: none;
 }
 .buttonCountry{
-    border: 1px solid #DAB9C4;
+    border: 1px solid #08337B;
     background: transparent;
     border-radius: 8px;
     font-family: "Open Sans";
@@ -95,7 +106,8 @@
     border-radius: 8px;
     padding-right: 24px;
     padding-left:8px;
-    background-color: #DAB9C4;
+    background-color: #08337B;
+    color: white;
   }
   .buttonCountry:hover:after {
     opacity: 1;
@@ -123,7 +135,7 @@
   }
 
   .buttonActivity{
-    border: 1px solid #DAB9C4;
+    border: 1px solid #08337B;
     font-family: "Open Sans";
     font-weight: 300;
     background: transparent;

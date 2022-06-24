@@ -10,9 +10,11 @@ router.get('/', async (req, res, next) => {
                 where: {
                     name: {
                         [Op.iLike]: `${name}%`
-                    }
+                    } 
                 }
-            })
+               
+            },
+            { include: Activity })
             if (allCountries.length===0)  return res.status(404).json({ msg: 'The name did not match any country' })
             else return res.json(allCountries)
         } else {

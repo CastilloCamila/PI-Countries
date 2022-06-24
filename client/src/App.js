@@ -11,7 +11,7 @@ import {Route} from 'react-router-dom';
 import NavBar from './components/home/navBar/nav/NavBar';
 function App() {
   return (
-    <div className="App">
+    <>
       
       <Route exact path={'/'}>
       <LandingPage/>
@@ -36,7 +36,7 @@ function App() {
       </Route>
       
 
-    </div>
+    </>
   );
 }
 
