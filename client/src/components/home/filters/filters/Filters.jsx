@@ -100,7 +100,7 @@ export default function Filters() {
             }
         }
         if (activity !== '') {
-            dispatch(getAllActivities())
+
             
             const filterActivies = allActivities.find(act => act.id === activity)
             dispatch(filtered(filterActivies.countries))
